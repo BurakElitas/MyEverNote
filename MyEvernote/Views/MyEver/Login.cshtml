@@ -1,0 +1,32 @@
+﻿@using MyEvernote.Entities.ObjectValues
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<link href="~/Content/Login-RegisterCss.css" rel="stylesheet" />
+<div class="container">
+    @using (Html.BeginForm())
+    {
+    <div class="card card-container">
+        @Html.ValidationSummary(false)
+
+       
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin">
+            <span id="reauth-email" class="reauth-email"></span>
+            @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Kullanıcı adınız" })<br />
+            @Html.TextBoxFor(model => model.Password, new { @class="form-control", placeholder="Şifreniz", type="password"} )
+            
+            <br />
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Giriş</button>
+        </form><!-- /form -->
+        <a href="#" class="forgot-password">
+            Şifrenizi mi unuttunuz?
+        </a>
+    </div><!-- /card-container -->
+
+    }
+</div><!-- /container -->

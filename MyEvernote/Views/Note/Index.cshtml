@@ -1,0 +1,80 @@
+﻿@using MyEvernote
+@model IEnumerable<MyEvernote.Entities.Note>
+
+@{
+    ViewBag.Title = "Notlarım";
+}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-10">
+            <h2>@ViewBag.baslik</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                @Bootstrap.LinkButton("/Note/Create", "primary", string.Empty, "fa-plus", string.Empty, "Yeni Not")
+            </p>
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Text)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsDraft)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LikeCount)
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Text)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsDraft)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LikeCount)
+                        </td>
+
+
+                        <td width="160">
+                            @if (ViewBag.state == false)
+                            {
+                                <button class="btn btn-success btn-sm" data-note-id="@item.Id" data-toggle="modal" data-target="#modal_comment" type="button"><i class='far fa-comment-dots'></i></button>
+                                @Bootstrap.LinkButton("/Note/Edit", "" + item.Id, "warning", "btn-sm", "fa-pen-alt", "Düzenle", string.Empty)
+                                @Bootstrap.LinkButton("/Note/Details", "" + item.Id, "info", "btn-sm", "fa-info", "Detay", string.Empty)
+                                @Bootstrap.LinkButton("/Note/Delete", "" + item.Id, "danger", "btn-sm", "fa-trash-alt", "Sil", string.Empty)
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+@Bootstrap.ModalPopup(id: "modal_comment", title: "Yorumlar")
+<script src="~/Scripts/Comment.js"></script>

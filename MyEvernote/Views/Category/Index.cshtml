@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MyEvernote.Entities.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-4">
+            <h2>Tüm Kategoriler</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                
+                @Bootstrap.LinkButton("/Category/Create", "primary", string.Empty, "fa-plus", string.Empty, "Yeni Kategori")
+
+            </p>
+            <table class="table table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModidiedUsername)
+                        </th>
+                       <th></th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModidiedUsername)
+                        </td>
+                        <td>
+                            
+
+                            @Bootstrap.LinkButton("/Category/Edit", "" + item.Id, "warning", "btn-sm", "fa-pen-alt", "Düzenle", string.Empty)
+                            @Bootstrap.LinkButton("/Category/Details", "" + item.Id, "info", "btn-sm", "fa-info", "Detay", string.Empty)
+                            @Bootstrap.LinkButton("/Category/Delete", "" + item.Id, "danger", "btn-sm", "fa-trash-alt", "Sil", string.Empty)
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

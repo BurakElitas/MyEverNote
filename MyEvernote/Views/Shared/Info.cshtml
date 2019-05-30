@@ -1,0 +1,41 @@
+﻿@model MyEvernote.Models.InfoViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+<style>
+    .col-lg-12 {
+        margin-top: 120px;
+    }
+</style>
+<div class="row my-auto">
+    <div class="col-lg-12 text-center">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">@Model.Header</h1>
+                <h6 class="display-4"><i class='fas fa-exclamation-circle'></i> @Model.Title</h6>
+                <p class="lead">
+                    
+                    @foreach (string item in Model.items)
+                    {
+                        @item<br />
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+    string js = string.Empty;
+    if (Model.isRedirecting)
+    {
+        js = "setTimeout(function () { window.location = '" + Model.RedirectingUrl + "'; }," + Model.RedirectingTimeout + ");";
+    }
+}
+<script>
+
+    $(function () {
+
+        @Html.Raw(js);
+
+    });
+</script>

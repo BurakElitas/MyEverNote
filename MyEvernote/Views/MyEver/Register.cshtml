@@ -1,0 +1,32 @@
+﻿@using MyEvernote.Entities.ObjectValues
+@model RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<link href="~/Content/Login-RegisterCss.css" rel="stylesheet" />
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="card card-container">
+
+        @Html.ValidationSummary(false)
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Kullanıcı adınız" })<br />
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-postanız" })<br />
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Şifreniz", type = "password" })<br />
+                @Html.TextBoxFor(model => model.RePassword, new { @class = "form-control", placeholder = "Şifreniz (tekrar)", type = "password" })
+
+                <br />
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Kayıt Ol</button>
+            </form><!-- /form -->
+            
+        </div><!-- /card-container -->
+
+    }
+</div><!-- /container -->

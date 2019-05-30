@@ -1,0 +1,16 @@
+﻿@using MyEvernote.Models
+@using MyEvernote.Entities
+@using MyEvernote.BusinessLayer
+
+@{ 
+
+    List<Category> catlist = CacheHelper.GetCategoriesFromCache();
+
+}
+<a href="/MyEver/Index" class="list-group-item"><i class='fas fa-arrow-right'></i> Tümü</a>
+
+@foreach (Category item in catlist)
+{
+<a href="/MyEver/CategoryById/@item.Id" title="@item.Description" class="list-group-item"><i class='fas fa-arrow-right'></i> @item.Title</a>
+}
+

@@ -1,0 +1,51 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.list-group-item{
+    color: black !important;
+}
+.card-footer{
+    height:50px;
+}
+.navbar {
+    background-color: black !important;
+}
+footer{
+    height:160px;
+}
+.bg-dark{
+    background-color:black !important;
+}
+
+.edit_comment {
+    color: #495057;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+

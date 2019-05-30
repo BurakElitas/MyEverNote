@@ -1,0 +1,35 @@
+﻿@using MyEvernote.Entities
+@model Note
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.ImageName != null)
+            {
+                <img class="card-img-top img-thumbnail zoom"  src="~/Images/Note/@Model.ImageName" alt="">
+            }
+            else
+            {
+                <img class="card-img-top img-thumbnail " src="http://placehold.it/700x400" alt="">
+            }
+
+        </div>
+        <div class="col-md-12">
+            <br />
+        </div>
+        
+        <div class="col-md-12">
+            <h4>@Model.Title</h4>
+        </div>
+        <div class="col-md-12">
+            <p>@Model.Text</p>
+            <br />
+        </div>
+        <br />
+        <div class="col-md-6 offset-md-8  small">
+            <i class='fas fa-user'></i> @Model.Owner.Username  <br />
+            <i class='fas fa-clock'></i> @Model.ModifiedOn
+        </div>
+    </div>
+    
+</div>

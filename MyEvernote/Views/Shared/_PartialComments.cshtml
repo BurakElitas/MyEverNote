@@ -1,0 +1,58 @@
+﻿@using MyEvernote.Entities
+@using MyEvernote.Models
+@model List<Comment>
+
+@{
+    EvernoteUser user = CurrentSession.User;
+}
+
+@foreach (Comment item in Model)
+{
+    <div class="media">
+        <i class="far fa-comment-dots"></i>
+        <div class="media-body">
+            <div>
+                <div class="col-md-12 ml-1 text-sm-left" id="span_text_@item.Id" contenteditable="false">
+                    @item.Text
+                </div>
+                <span class="col-md-12 text-sm-right">
+
+                    <i class="fa fa-user"></i> @item.Owner.Username  &nbsp;&nbsp;
+                    <i class="fa fa-clock"></i> @item.ModifiedOn  &nbsp;&nbsp;
+
+
+                </span>
+
+                @if (user != null && user.Id == item.Owner.Id)
+                {
+                    <small class="col-md-2 ml-5 text-sm-right">
+                        <button type="button" onclick='doComment(this,"edit_clicked",@item.Id,"#span_text_@item.Id")' data-edit-mode="false" class="btn btn-outline-warning btn-sm"><i class="fa fa-edit"></i> </button>
+                        <button type="button" onclick='doComment(this,"delete_clicked",@item.Id)' class="btn btn-outline-danger btn-sm"> <i class="fa fa-trash"></i> </button>
+                    </small>
+                }
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <hr />
+
+}
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">Bu paylaşıma ait yorum bulunamadı.</div>
+}
+@if (CurrentSession.User != null)
+{
+<div class="input-group ml-1">
+    <input type="text" class="form-control col-md-10" id="add_com" placeholder="Yorumunuz.." aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+        <button class="btn btn-success" onclick="doComment(this,'add_comment')" type="button">Gönder</button>
+    </div>
+</div>
+}
+

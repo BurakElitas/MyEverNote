@@ -1,0 +1,54 @@
+﻿@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-4">
+            <h2>Kategori Düzenleme Sayfası</h2>
+            <hr />
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model=>model.CreatedOn)
+        @Html.HiddenFor(model=>model.ModidiedUsername)
+        @Html.HiddenFor(model=>model.ModifiedOn)
+
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control col-md-10" } })
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                @Bootstrap.Button("submit", "success", string.Empty, "fa-check", "Kaydet")
+               
+                @Bootstrap.LinkButton("/Category/Index", "light", string.Empty, "fa-arrow-alt-circle-left", string.Empty, "Listeye Geri Dön")
+            </div>
+        </div>
+    </div>
+    }
+
+  
+</div>

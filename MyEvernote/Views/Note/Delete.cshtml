@@ -1,0 +1,88 @@
+﻿@model MyEvernote.Entities.Note
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-10">
+            <h2>Bu Notu Silmek İstediğinizden Emin Misiniz?</h2>
+            <hr />
+        </div>
+    </div>
+
+   
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDraft)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsDraft)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LikeCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LikeCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedOn)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedOn)
+            </dd>
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+           
+            @Bootstrap.Button("submit", "danger", string.Empty, "fa-trash-alt", "Sil")
+            @Bootstrap.LinkButton("/Note/Index", "light", string.Empty, "fa-arrow-alt-circle-left", string.Empty, "Listeye Geri Dön")
+        </div>
+        }
+    </div>
+
+</div>

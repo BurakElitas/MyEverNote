@@ -1,0 +1,77 @@
+﻿@using MyEvernote
+@model MyEvernote.Entities.Category
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-4">
+            <h2>Bu Kategoriyi Silmek İstediğinize Emin Misiniz?</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            
+            <div>
+               
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Title)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedOn)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModifiedOn)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModifiedOn)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ModidiedUsername)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ModidiedUsername)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+
+                    @Bootstrap.Button("submit", "danger",string.Empty, "fa-trash-alt","Sil")
+                    @Bootstrap.LinkButton("/Category/Index", "light",string.Empty, "fa-arrow-alt-circle-left",string.Empty, "Listeye Geri Dön")
+                   
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
